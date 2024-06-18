@@ -7,27 +7,27 @@ on: push
 jobs:
   build:
     # we can also specify the OS to run test on
-#  runs-on: windows-latest
+      runs-on: windows-latest
 
   # a job is a sequence of steps
-  steps:
+      steps:
 
-    # Next we need to check out of repo and set up python
-    # A 'name' is just and optional label shown in the log - helpful to clarify progress- and can be anything
-    - name: Checkout repository
-      uses: actions/checkout@v4
+        # Next we need to check out of repo and set up python
+        # A 'name' is just and optional label shown in the log - helpful to clarify progress- and can be anything
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-    - name: Set up Python 3.11
-      uses: actions/setup-python@v4
-      with:
-        python-version: '3.11'
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
 
-    - name: Install python dependencies
-      run:
-        python -m pip install --upgrade pip
-        python -m pip install -r requirements.txt
+      - name: Install python dependencies
+        run:
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements.txt
 
-    - name: Test with Pytest
-      run:
-        python -m pytest --cov=inflammation.models tests/test_models/py
+      - name: Test with Pytest
+        run:
+          python -m pytest --cov=inflammation.models tests/test_models/py
 
